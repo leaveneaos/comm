@@ -1,4 +1,4 @@
-package time;
+package com.rjxx.time;
 
 public class GlobsAttributes {
 	/**

@@ -1,4 +1,4 @@
-package com.rjxx.utils;
+package com.rjxx.web;
 
 /**
  * Created by Administrator on 2016/1/10.
