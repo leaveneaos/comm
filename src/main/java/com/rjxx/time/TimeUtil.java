@@ -1,4 +1,4 @@
-package time;
+package com.rjxx.time;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
