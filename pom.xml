@@ -14,6 +14,18 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<dependencies>
+	     <dependency>
+             <groupId>dom4j</groupId>
+             <artifactId>dom4j</artifactId>
+          </dependency>
+          <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ws.commons.axiom</groupId>
+            <artifactId>axiom-api</artifactId>
+        </dependency>
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
