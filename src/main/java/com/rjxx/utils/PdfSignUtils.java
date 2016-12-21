@@ -93,7 +93,7 @@ public class PdfSignUtils {
      * @param outputFilePath
      */
     public static void eInvoicePdfSign(String pdfPath, String imagePath, String outputFilePath) {
-        List<float[]> list = findCoordinateByKeyword("销货方：(章)", pdfPath);
+        List<float[]> list = findCoordinateByKeyword("销货方：（章）", pdfPath);
         signPdf(pdfPath, list.get(0), imagePath, outputFilePath);
     }
 
