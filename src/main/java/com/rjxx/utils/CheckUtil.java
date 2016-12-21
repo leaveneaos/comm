@@ -1,7 +1,10 @@
 package com.rjxx.utils;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class CheckUtil {
@@ -138,9 +141,15 @@ public class CheckUtil {
 
             }
         }
-        //PropKit.use("attr.properties");
-        //String invoiceMaximumAmount = PropKit.get("Invoice_Maximum_Amount");
-        String invoiceMaximumAmount ="9999.99";
+        URL url =Thread.currentThread().getContextClassLoader().getResource("attr.properties");
+		Properties p = new Properties(); 
+		try {
+			p.load(url.openStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+        String invoiceMaximumAmount =String.valueOf(p.get("Invoice_Maximum_Amount")) ;
         if (totaljshj > Double.parseDouble(invoiceMaximumAmount)) {
             s += "9041:订单合计金额超过单张发票开票最大限额;";
         }
