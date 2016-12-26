@@ -17,6 +17,12 @@ public class ChinaNumber {
      * @return 金额中文大写
      */
     public static String getCHSNumber(String money) {
+        //判断是否是负数
+        boolean negative = false;
+        if ("-".equals(money.substring(0, 1))) {
+            negative = true;
+            money = money.substring(1);
+        }
         String chs = "";
         int pos = money.indexOf(".");
         String tmp_int = null;
@@ -517,7 +523,9 @@ public class ChinaNumber {
         } else {
             chs = chs + "圆整";
         }
-
+        if (negative) {
+            chs = "负" + chs;
+        }
         return chs;
     }
 
