@@ -93,6 +93,7 @@ public class ExcelUtil {
 
             short minColIx = 0;
             short maxColIx = row.getLastCellNum();
+            boolean flag = false;
             for (short colIx = minColIx; colIx <= maxColIx; colIx++) {
                 Cell cell = row.getCell(new Integer(colIx));
                 CellValue cellValue = evaluator.evaluate(cell);
@@ -100,6 +101,7 @@ public class ExcelUtil {
                     list.add(null);
                     continue;
                 }
+                flag = true;
                 // 经过公式解析，最后只存在Boolean、Numeric和String三种数据类型，此外就是Error了
                 // 其余数据类型，根据官方文档，完全可以忽略http://poi.apache.org/spreadsheet/eval.html
                 switch (cellValue.getCellType()) {
@@ -127,7 +129,9 @@ public class ExcelUtil {
                         break;
                 }
             }
-            finalList.add(list);
+            if (flag) {
+            	finalList.add(list);
+			}
         }
         return finalList;
     }
