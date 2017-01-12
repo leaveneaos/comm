@@ -31,7 +31,29 @@ public class TemplateUtils {
         return content;
     }
 
+    /**
+     * 根据模板生成内容
+     *
+     * @param templateFile
+     * @param dataMap
+     * @return
+     * @throws Exception
+     */
     public static String generateContent(File templateFile, Map dataMap) throws Exception {
         return generateContent(templateFile, dataMap, "UTF-8");
     }
+
+    /**
+     * 默认模板在classpath下的template文件夹中
+     *
+     * @param templateName
+     * @param dataMap
+     * @return
+     * @throws Exception
+     */
+    public static String generateContent(String templateName, Map dataMap) throws Exception {
+        String path = java.net.URLDecoder.decode(TemplateUtils.class.getClassLoader().getResource("/template/" + templateName).getPath(), "UTF-8");
+        return generateContent(new File(path), dataMap);
+    }
+
 }
