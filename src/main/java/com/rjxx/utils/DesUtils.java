@@ -1,7 +1,5 @@
 package com.rjxx.utils;
 
-import org.apache.commons.codec.binary.Base64;
-
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
@@ -10,6 +8,9 @@ import java.security.Key;
 
 public class DesUtils {
 
+    /**
+     * 与.net客户端共同使用的加解密的key
+     */
     public static String GLOBAL_DES_KEY = "A!9fF&vH";
 
     /**
@@ -98,7 +99,6 @@ public class DesUtils {
         }
         return stringBuilder.toString();
     }
-
 
     public static void main(String[] args) throws Exception {
         String key = "asdfqwer";
