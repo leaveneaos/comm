@@ -1,5 +1,7 @@
 package com.rjxx.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,4 +58,15 @@ public class HtmlUtils {
         return ret;
     }
 
+    /**
+     * 获取请求参数转换成string
+     *
+     * @param request
+     * @return
+     */
+    public static String getRequestParamsString(HttpServletRequest request) throws Exception {
+        Map<String, String[]> map = request.getParameterMap();
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(map);
+    }
 }
