@@ -196,8 +196,13 @@ public class PageInterceptor implements Interceptor {
      * @return
      */
     private String getCountSql(String sql) {
-
-        return "select count(1) from (" + sql + ") as total";
+        String str = "" ;
+        if ("mysql".equalsIgnoreCase(databaseType)) {
+        	str="select count(1) from (" + sql + ") as total";
+        } else if ("oracle".equalsIgnoreCase(databaseType)) {
+        	str="select count(1) as total from (" + sql + ") ";
+        }
+		return str;
     }
 
     /**
