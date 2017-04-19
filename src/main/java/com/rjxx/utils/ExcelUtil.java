@@ -89,6 +89,9 @@ public class ExcelUtil {
         int maxRowIx = sheet.getLastRowNum();
         for (int rowIx = minRowIx; rowIx <= maxRowIx; rowIx++) {
             Row row = sheet.getRow(rowIx);
+            if(row == null){
+                break;
+            }
             List list = new ArrayList();
 
             short minColIx = 0;
