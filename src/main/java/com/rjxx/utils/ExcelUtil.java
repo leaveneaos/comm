@@ -120,7 +120,7 @@ public class ExcelUtil {
                         }
                         break;
                     case Cell.CELL_TYPE_STRING:
-                        list.add(cellValue.getStringValue().trim());
+                        list.add(cellValue.getStringValue());
                         break;
                     case Cell.CELL_TYPE_FORMULA:
                         break;
