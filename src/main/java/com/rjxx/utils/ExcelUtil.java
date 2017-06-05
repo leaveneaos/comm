@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,7 +117,9 @@ public class ExcelUtil {
                         if (DateUtil.isCellDateFormatted(cell)) {
                             list.add(cell.getDateCellValue());
                         } else {
-                            list.add(cellValue.getNumberValue());
+                            DecimalFormat df = new DecimalFormat("0.###############");
+                            String  r = df.format(cellValue.getNumberValue());
+                            list.add(r);
                         }
                         break;
                     case Cell.CELL_TYPE_STRING:
