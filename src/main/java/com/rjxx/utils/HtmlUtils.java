@@ -22,6 +22,22 @@ public class HtmlUtils {
     }
 
     /**
+     * 获取域名
+     *
+     * @param request
+     * @return
+     */
+    public static String getDomainPath(HttpServletRequest request) {
+        String domainPath = null;
+        if (request.getServerPort() == 80 || request.getServerPort() == 443) {
+            domainPath = request.getScheme() + "://" + request.getServerName() + "/";
+        } else {
+            domainPath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/";
+        }
+        return domainPath;
+    }
+
+    /**
      * 获取项目路径
      *
      * @param request
