@@ -55,6 +55,23 @@ public class HtmlUtils {
     }
 
     /**
+     * 补齐url，以http开头
+     *
+     * @param request
+     * @param url
+     * @return
+     */
+    public static String finishedUrl(HttpServletRequest request, String url) {
+        if (url.startsWith("http:") || url.startsWith("https:")) {
+            return url;
+        } else if (url.startsWith("/")) {
+            return getBasePath(request) + url.substring(1);
+        } else {
+            return getBasePath(request) + url;
+        }
+    }
+
+    /**
      * 将查询字符串转换成Map
      *
      * @param queryString
