@@ -9,6 +9,36 @@ import java.math.BigDecimal;
 public class InvoiceValidateUtils extends ValidateUtils {
 
     /**
+     * 校验购方
+     *
+     * @param name
+     * @param identifier
+     * @param address
+     * @param telephoneNo
+     * @param bank
+     * @param bankAccount
+     * @return
+     */
+    public static String checkBuyer(String name, String identifier, String address, String telephoneNo, String bank, String bankAccount) {
+        StringBuilder message = new StringBuilder();
+        if (StringUtils.isBlank(name)) {
+            message.append("购方名称不能为空;");
+        } else {
+            message.append(checkBuyerName(name)).append(";");
+        }
+        if (StringUtils.isNotBlank(identifier)) {
+            message.append(checkBuyerIdentifier(identifier)).append(";");
+        }
+        if (StringUtils.isNotBlank(address) || StringUtils.isNotBlank(telephoneNo)) {
+            message.append(checkBuyerAddressTelephoneNo(address, telephoneNo)).append(";");
+        }
+        if (StringUtils.isNotBlank(bank) || StringUtils.isNotBlank(bankAccount)) {
+            message.append(checkBuyerBankAndAccount(bank, bankAccount)).append(";");
+        }
+        return message.toString();
+    }
+
+    /**
      * 校验购方名称
      *
      * @param buyerName
