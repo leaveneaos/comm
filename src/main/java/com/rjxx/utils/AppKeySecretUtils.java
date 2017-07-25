@@ -42,13 +42,13 @@ public class AppKeySecretUtils {
     }
 
     public static void main(String[] args) throws Exception {
-//        for (int i = 0; i < 10; i++) {
-//            String[] arr = generate();
-//            System.out.println(arr[0].substring(0, 12) + ":" + arr[1]);
-//        }
-        String data = "on=201610151255111235&ot=20161013125511&pr=23&sn=sh001";
+        for (int i = 0; i < 10; i++) {
+            String[] arr = generate();
+            System.out.println(arr[0].substring(0, 12) + ":" + arr[1]);
+        }
+        /*String data = "on=201610151255111235&ot=20161013125511&pr=23&sn=sh001";
         String key = "0f2aa080911da0adcfc5f630e9d20e1a";
-        System.out.print(genEncryptQueryString(data, key));
+        System.out.print(genEncryptQueryString(data, key));*/
     }
 
 }
