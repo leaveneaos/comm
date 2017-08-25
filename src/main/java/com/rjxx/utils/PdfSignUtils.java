@@ -128,7 +128,7 @@ public class PdfSignUtils {
             float width = image.getWidth() * 0.37f;
             float height = image.getHeight() * 0.37f;
             PdfSignatureAppearance sap = stp.getSignatureAppearance();
-            sap.setCertificationLevel(PdfSignatureAppearance.CERTIFIED_NO_CHANGES_ALLOWED);
+            sap.setCertificationLevel(PdfSignatureAppearance.NOT_CERTIFIED);
             Rectangle r = new Rectangle(startX, startY, startX + width, startY + height);
             sap.setVisibleSignature(r, 1, null);
             sap.setContact("www.datarj.com");
