@@ -123,10 +123,14 @@ public class PdfSignUtils {
             stp = PdfStamper.createSignature(reader, fout, '\0');
 
             Image image = Image.getInstance(imagePath);
-            float startX = coordinate[0] + 10f;
+            float startX = coordinate[0] + 10.85f;
+            float startY = coordinate[1] - 16.25f;
+            float width = image.getWidth() * 0.368f;
+            float height = image.getHeight() * 0.37f;
+            /*float startX = coordinate[0] + 10f;
             float startY = coordinate[1] - 16f;
             float width = image.getWidth() * 0.37f;
-            float height = image.getHeight() * 0.37f;
+            float height = image.getHeight() * 0.37f;*/
             PdfSignatureAppearance sap = stp.getSignatureAppearance();
             sap.setCertificationLevel(PdfSignatureAppearance.NOT_CERTIFIED);
             Rectangle r = new Rectangle(startX, startY, startX + width, startY + height);
