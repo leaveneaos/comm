@@ -9,7 +9,7 @@ public class IMEIGenUtils {
      * @param args
      */
     public static void main(String[] args) {
-        String code = "06140210010112345678";
+        String code = "08252088880152000060";
         String newCode = genCode(code);
         System.out.println("======" + newCode);
         System.out.println(code + newCode);
