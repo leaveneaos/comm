@@ -18,4 +18,13 @@ public class SignUtils {
         String newSign =  DigestUtils.md5Hex(signSourceData);
         return newSign;
     }
+    public static String getSign2(String QueryData,String key){
+        String signSourceData = "on=" + QueryData + "&key=" + key;
+        String newSign =  DigestUtils.md5Hex(signSourceData);
+        return newSign;
+    }
+    public static void main(String[] args) {
+        String s=SignUtils.getSign2("092225608902418740507","eb27684df1279b68d29e578b421daa58");
+        System.out.println(s);
+    }
 }
