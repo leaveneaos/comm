@@ -92,7 +92,7 @@ public class XmltoJson {
             } else if (param.getValue() instanceof JSONArray) {
                 resMap.put(param.getKey(), json2List(param.getValue()));
             } else {
-                resMap.put(param.getKey(), JSONObject.toJSONString(param.getValue(), SerializerFeature.WriteClassName));
+                resMap.put(param.getKey(), param.getValue());
             }
         }
         return resMap;

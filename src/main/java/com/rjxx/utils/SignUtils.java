@@ -24,7 +24,7 @@ public class SignUtils {
         return newSign;
     }
     public static void main(String[] args) {
-        String s=SignUtils.getSign2("092225608902418740507","eb27684df1279b68d29e578b421daa58");
+        String s=SignUtils.getSign2("092120221701307042144","eb27684df1279b68d29e578b421daa58");
         System.out.println(s);
     }
 }
