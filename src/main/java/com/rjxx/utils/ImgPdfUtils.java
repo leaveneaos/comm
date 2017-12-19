@@ -47,7 +47,7 @@ public class ImgPdfUtils {
             );
             BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             tag.getGraphics().drawImage(img, 0, 0, width, height, null);
-            tag = tag.getSubimage(10, 20, width - 20, height - 120);
+            tag = tag.getSubimage(10, 20, width - 20, height - 100);
             imageList.add(tag);
         }
         //合并图片
