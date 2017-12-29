@@ -38,8 +38,8 @@ public class ImgPdfUtils {
         for (int i = 1; i <= pdffile.getNumPages(); i++) {
             PDFPage page = pdffile.getPage(i);
             Rectangle rect = new Rectangle(0, 0, ((int) page.getBBox().getWidth()), ((int) page.getBBox().getHeight()));
-            int width = (int) (rect.width );
-            int height = (int) (rect.height);
+            int width = (int) (rect.width *1.5);
+            int height = (int) (rect.height *1.5);
             Image img = page.getImage(width, height, rect,
                     null, // null for the ImageObserver
                     true, // fill background with white
@@ -47,7 +47,7 @@ public class ImgPdfUtils {
             );
             BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             tag.getGraphics().drawImage(img, 0, 0, width, height, null);
-            tag = tag.getSubimage(10, 20, width - 20, height - 100);
+            tag = tag.getSubimage(20, 40, width - 40, height - 80);
             imageList.add(tag);
         }
         //合并图片
@@ -58,7 +58,7 @@ public class ImgPdfUtils {
             resultImage = imageList.get(0);
         }
         FileOutputStream out = new FileOutputStream(imagePath); // 输出到文件流
-        ImageIO.write(resultImage, "png", out);
+        ImageIO.write(resultImage, "jpg", out);
 //                JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
 //                JPEGEncodeParam param2 = encoder.getDefaultJPEGEncodeParam(tag);
 //                param2.setQuality(1f, false);// 1f是提高生成的图片质量
