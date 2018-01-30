@@ -246,7 +246,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         for (int i = 0; i < chars.length; i++) {
             if(i != chars.length - 1)
             {
-                sbu.append((int)chars[i]).append(",");
+                sbu.append((int)chars[i]);
             }
             else {
                 sbu.append((int)chars[i]);
