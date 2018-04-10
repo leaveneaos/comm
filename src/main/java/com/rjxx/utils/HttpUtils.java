@@ -10,6 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,5 +66,46 @@ public class HttpUtils {
      */
     public static String doPost(String url, Map<String, String> params) throws Exception {
         return doPost(url, params, "UTF-8");
+    }
+
+    /**
+     * 发送https 加密的url的 post请求
+     * @param url
+     * @param data
+     * @return
+     * @throws Exception
+     */
+    public static String Https_post(String url,Map<String,String> data) throws Exception {
+
+        String result=null;
+        CloseableHttpResponse httpResponse=null;
+        CloseableHttpClient httpClient=null;
+        try{
+            List<NameValuePair> nameValuePairList = new ArrayList<>(data.size());
+            for (Map.Entry<String, String> entry : data.entrySet()) {
+                NameValuePair pair = new BasicNameValuePair(entry.getKey(), entry.getValue());
+                nameValuePairList.add(pair);
+            }
+            HttpPost httpPost = new HttpPost(url);
+            HttpEntity httpEntity = new UrlEncodedFormEntity(nameValuePairList);
+            httpPost.setEntity(httpEntity);
+            httpClient = new SSLClient();
+            httpResponse = httpClient.execute(httpPost);
+            InputStream is = httpResponse.getEntity().getContent();
+            result = IOUtils.toString(is, "UTF-8");
+        }catch (IOException e){
+            System.out.println("request url=" + url + ", exception, msg=" + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (httpResponse != null) {
+                try {
+                    httpResponse.close();
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
     }
 }
