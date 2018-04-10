@@ -26,16 +26,19 @@ import java.util.Properties;
  * StatementHandler对象的prepare方法，即调用invocation.proceed()。
  * 对于分页而言，在拦截器里面我们还需要做的一个操作就是统计满足当前条件的记录一共有多少，这是通过获取到了原始的Sql语句后，把它改为对应的统计语句再利用Mybatis封装好的参数和设
  * 置参数的功能把Sql语句中的参数进行替换，之后再执行查询记录数的Sql语句进行总记录数的统计。
+ *@author zhangbing
  */
 @Intercepts({
         @Signature(method = "prepare", type = StatementHandler.class, args = {Connection.class})})
 public class PageInterceptor implements Interceptor {
 
-    private String databaseType;//数据库类型，不同的数据库有不同的分页方法
+    //数据库类型，不同的数据库有不同的分页方法
+    private String databaseType;
 
     /**
      * 拦截后要执行的方法
      */
+    @Override
     public Object intercept(Invocation invocation) throws Throwable {
         //对于StatementHandler其实只有两个实现类，一个是RoutingStatementHandler，另一个是抽象类BaseStatementHandler，
         //BaseStatementHandler有三个子类，分别是SimpleStatementHandler，PreparedStatementHandler和CallableStatementHandler，
@@ -79,6 +82,7 @@ public class PageInterceptor implements Interceptor {
     /**
      * 拦截器对应的封装原始对象的方法
      */
+    @Override
     public Object plugin(Object target) {
         return Plugin.wrap(target, this);
     }
@@ -86,6 +90,7 @@ public class PageInterceptor implements Interceptor {
     /**
      * 设置注册拦截器时设定的属性
      */
+    @Override
     public void setProperties(Properties properties) {
         this.databaseType = properties.getProperty("databaseType");
     }
@@ -180,9 +185,9 @@ public class PageInterceptor implements Interceptor {
         } finally {
             try {
                 if (rs != null)
-                    rs.close();
+                {rs.close();}
                 if (pstmt != null)
-                    pstmt.close();
+                {pstmt.close();}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
