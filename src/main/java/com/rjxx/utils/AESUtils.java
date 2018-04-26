@@ -155,7 +155,6 @@ public class AESUtils {
         if (str == null || key == null){ return null;
         }
         byte[] byteKey= hexStringToBytes(key);
-        System.out.println(byteKey.length);
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(byteKey, "AES"));
         byte[] bytes = cipher.doFinal(str.getBytes("utf-8"));
