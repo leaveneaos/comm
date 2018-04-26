@@ -365,4 +365,19 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         String r = bytes2HexString(string2Bytes(s));
         return r;
     }
+
+    /**
+     * 去除字符串中的空格、回车、换行符、制表符等
+     * @param str
+     * @return
+     */
+    public static String replaceSpecialStr(String str) {
+        String repl = "";
+        if (str!=null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            repl = m.replaceAll("");
+        }
+        return repl;
+    }
 }
