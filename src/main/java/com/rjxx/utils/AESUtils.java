@@ -168,7 +168,7 @@ public class AESUtils {
      * @return
      * @throws Exception
      */
-    public static String aesDecrypt(byte[] str, String key) throws Exception {
+    public static byte[] aesDecrypt(byte[] str, String key) throws Exception {
         if (str == null || key == null){ return null;}
 
         byte[] byteKey= hexStringToBytes(key);
@@ -177,7 +177,7 @@ public class AESUtils {
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(byteKey, "AES"));
         //byte[] bytes = hexStringToBytes(str);
         byte[]  bytes = cipher.doFinal(str);
-        return new String(bytes, "utf-8");
+        return bytes;
     }
 
 
