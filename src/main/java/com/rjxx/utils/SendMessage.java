@@ -84,6 +84,8 @@ public class SendMessage {
 			 }else if("isv.TEMPLATE_MISSING_PARAMETERS".equals(sendSmsResponse.getCode())) {
 				 System.out.println("模板缺少变量");
 				 message="sendFail";
+			 }else {
+				 message="sendFail";
 			 }
 			
 		} catch (Exception e) {
