@@ -139,6 +139,11 @@
 			<artifactId>aliyun-java-sdk-sms</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
