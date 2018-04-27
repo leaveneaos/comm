@@ -75,7 +75,14 @@ public class SendMessage {
 			 if(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
 				 message =sendSmsResponse.getRequestId();
 				 //请求成功
-			 }else {
+			 }else if("isv.BUSINESS_LIMIT_CONTROL".equals(sendSmsResponse.getCode())){
+				 message="sendFail";
+				 System.out.println("业务限流");
+			 }else if("isv.MOBILE_NUMBER_ILLEGAL".equals(sendSmsResponse.getCode())){
+				 System.out.println("非法手机号");
+				 message="sendFail";
+			 }else if("isv.TEMPLATE_MISSING_PARAMETERS".equals(sendSmsResponse.getCode())) {
+				 System.out.println("模板缺少变量");
 				 message="sendFail";
 			 }
 			
