@@ -75,6 +75,7 @@ public class SendMessage {
 			 if(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
 				 message =sendSmsResponse.getRequestId();
 				 //请求成功
+				 System.out.println("111");
 			 }else if("isv.BUSINESS_LIMIT_CONTROL".equals(sendSmsResponse.getCode())){
 				 message="sendFail";
 				 System.out.println("业务限流");
@@ -96,9 +97,9 @@ public class SendMessage {
 	}
 	public static void main(String[] args) {
 		Map<String, String> map = new HashMap<>();
-		map.put("code", "051898");
-		map.put("product", "容津信息");
-		SendMessage.sendSms("泰易电子发票", "SMS_33950398", map, "2387932332");
+		map.put("jshj", "1111");
+		map.put("tqm", "11111");
+		SendMessage.sendSms("泰易电子发票", "SMS_34725005", map, "17639530970");
 		//SendMessage.sendMessage("泰易电子发票", "SMS_33950398", map, "23332323");
 	}
 }
