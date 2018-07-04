@@ -75,7 +75,6 @@ public class SendMessage {
 			 if(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
 				 message =sendSmsResponse.getRequestId();
 				 //请求成功
-				 System.out.println("111");
 			 }else if("isv.BUSINESS_LIMIT_CONTROL".equals(sendSmsResponse.getCode())){
 				 message="sendFail";
 				 System.out.println("业务限流");
